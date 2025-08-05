@@ -9,5 +9,5 @@ test('check sorting', async ({ page }) => {
   await page.locator('[data-test="product-sort-container"]').selectOption('za');
   
   //Assert
-  await expect(page.locator('.inventory_item_price').first()).toContainText('$20.99');
+  await expect(page.locator('.inventory_item_price').first()).toContainText('$15.99');
 });

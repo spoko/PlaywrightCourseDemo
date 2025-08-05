@@ -1,6 +1,7 @@
 import { Page, Locator } from "@playwright/test";
+import { BasePage } from "./basePage";
 
-export class LoginPage {
+export class LoginPage extends BasePage{
     //main page object
     readonly page: Page;
     //Elements
@@ -10,6 +11,7 @@ export class LoginPage {
 
     //constructor
     constructor(page: Page) {
+        super();
         this.page = page;
         this.userNameInput = page.locator('#user-name');
         this.passwordInput = page.locator('#password');
@@ -17,6 +19,10 @@ export class LoginPage {
     }
 
     //methods i.e. user actions on the current page
+    async isAt() {
+        return await this.userNameInput.isVisible();
+    }
+
     async fillUserName(userName: string){
         await this.userNameInput.fill(userName);
     }
@@ -29,4 +35,9 @@ export class LoginPage {
         await this.loginBtn.click();
     }
 
+    async login(userName: string, password: string){
+        await this.fillUserName(userName);
+        await this.fillPassword(password);
+        await this.clickLoginButton();
+    }
 }

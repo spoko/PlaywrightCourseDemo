@@ -6,3 +6,8 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 package-lock.json
+*.map
+*.js
+*.d.ts
+tsconfig.tsbuildinfo
+.auth/loggedUser.json

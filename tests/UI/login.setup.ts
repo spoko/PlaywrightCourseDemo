@@ -31,7 +31,7 @@ setup('succefful login', async ({page, loginPage, productPage}) => {
   await loginPage.login('standard_user', 'secret_sauce');
 
   //Assert
-  expect(await productPage.isAt()).toBe(false);
+  expect(await productPage.isAt()).toBe(true);
 
   //store state of currently logged browser, session, context
   await page.context().storageState({path: authJsonFile});

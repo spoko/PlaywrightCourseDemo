@@ -9,8 +9,8 @@ setup.skip('successfull login', async ({ page }) => {
   await page.goto('');
 
   //Act
-  await page.locator('[data-test="username"]').fill('standard_user');
-  await page.locator('[data-test="password"]').fill('secret_sauce');
+  await page.locator('[data-test="username"]').fill(process.env.SauceUsername ?? "missing username");
+  await page.locator('[data-test="password"]').fill(process.env.SaucePassword ?? "missing password");
   await page.locator('[data-test="login-button"]').click();
 
   //Assert
@@ -22,13 +22,14 @@ setup.skip('successfull login', async ({ page }) => {
   await page.context().storageState({path: authJsonFile});
 });
 
+
 //login test with fixture
-setup('succefful login', async ({page, loginPage, productPage}) => {
+setup('succeffull login', async ({page, loginPage, productPage}) => {
   //Arrange
   await page.goto('');
 
   //Act
-  await loginPage.login('standard_user', 'secret_sauce');
+  await loginPage.login(process.env.SauceUsername ?? "missing username", process.env.SaucePassword ?? "missing password");
 
   //Assert
   expect(await productPage.isAt()).toBe(true);

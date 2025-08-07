@@ -44,6 +44,12 @@ export default defineConfig({
       dependencies: ['setup'],
     },
 
+    // {
+    //   name: 'iPhone chromium',
+    //   use: { ...devices["iPhone 12 Pro Max"], storageState: '.auth/loggedUser.json'},
+    //   dependencies: ['setup'],
+    // },
+
     {
       name: 'setup',
       testMatch: '*.setup.ts'

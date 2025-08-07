@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import {faker} from '@faker-js/faker';
  
 test('successfull purchase', async ({ page }) => {
   //Act
@@ -11,11 +12,11 @@ test('successfull purchase', async ({ page }) => {
   await page.locator('[data-test="shopping-cart-link"]').click();
   await page.locator('[data-test="checkout"]').click();
   await page.locator('[data-test="firstName"]').click();
-  await page.locator('[data-test="firstName"]').fill('Ibraim');
+  await page.locator('[data-test="firstName"]').fill(faker.person.firstName());
   await page.locator('[data-test="firstName"]').press('Tab');
-  await page.locator('[data-test="lastName"]').fill('Asanov');
+  await page.locator('[data-test="lastName"]').fill(faker.person.lastName());
   await page.locator('[data-test="lastName"]').press('Tab');
-  await page.locator('[data-test="postalCode"]').fill('1000');
+  await page.locator('[data-test="postalCode"]').fill(faker.location.zipCode());
   await page.locator('[data-test="continue"]').click();
   await page.locator('[data-test="finish"]').click();
   await expect(page.locator('[data-test="pony-express"]')).toBeVisible();
